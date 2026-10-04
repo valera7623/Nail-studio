@@ -1,0 +1,53 @@
+# Install: copy to /home/valera/traefik/dynamic/nail.yml
+# Traefik :80/:443 -> host :8090
+# Рядом: studio-book :8088, eyelash-studio :8089. Этот бот — :8090.
+# www has DNS — include it so phones that auto-open www. work.
+
+http:
+  routers:
+    nail:
+      rule: "Host(`nailbook.ru`)"
+      priority: 1
+      entryPoints:
+        - websecure
+      service: nail
+      tls:
+        certResolver: letsencrypt
+
+    nail-www:
+      rule: "Host(`www.nailbook.ru`)"
+      priority: 1
+      entryPoints:
+        - websecure
+      service: nail
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - nail-redirect-apex
+
+    nail-http:
+      rule: "Host(`nailbook.ru`) || Host(`www.nailbook.ru`)"
+      entryPoints:
+        - web
+      service: nail
+      middlewares:
+        - nail-redirect-https
+
+  services:
+    nail:
+      loadBalancer:
+        servers:
+          - url: "http://172.19.0.1:8090"
+
+  middlewares:
+    nail-redirect-https:
+      redirectScheme:
+        scheme: https
+        port: "443"
+        permanent: true
+
+    nail-redirect-apex:
+      redirectRegex:
+        regex: "^https://www\\.nailbook\\.ru/(.*)"
+        replacement: "https://nailbook.ru/${1}"
+        permanent: true

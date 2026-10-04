@@ -1,0 +1,31 @@
+# Production на VPS РФ.
+# GitHub Actions пушит ghcr.io/valera7623/nail-studio и на сервере только pull.
+# HTTP 8090, Redis 6381.
+# Рядом studio-book :8088 / Redis :6379 и eyelash-studio :8089 / Redis :6380.
+#
+# network_mode: host — polling к api.telegram.org как у хоста.
+name: nail-studio
+
+services:
+  redis:
+    image: redis:7-alpine
+    network_mode: host
+    command: ["redis-server", "--port", "6381", "--save", "", "--appendonly", "no", "--bind", "127.0.0.1"]
+    restart: unless-stopped
+  bot:
+    image: ${DOCKER_IMAGE:-nail-studio:local}
+    build: .
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      SQLITE_PATH: /app/data/nail.db
+      USE_REDIS: "true"
+      REDIS_URL: redis://127.0.0.1:6381/0
+      HTTP_PORT: "8090"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    pull_policy: missing
+    depends_on:
+      - redis
