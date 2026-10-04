@@ -1,12 +1,12 @@
 # Автодеплой: GitHub Actions → GHCR → VPS 185.106.95.16
-# Репозиторий: valera7623/Eyelash-studio
+# Репозиторий: valera7623/Nail-studio
 #
 # Secrets (Settings → Secrets and variables → Actions):
 #   VPS_HOST       — 185.106.95.16
 #   VPS_USERNAME   — valera
 #   VPS_SSH_KEY    — приватный ключ (github_actions_deploy), публичный уже в authorized_keys
 #   VPS_PORT       — опционально, по умолчанию 22
-#   BOT_TOKEN      — токен @nailstudiobot (первый .env на VPS, потом не перезаписывается)
+#   BOT_TOKEN      — токен @nail_bookbot (первый .env на VPS, потом не перезаписывается)
 #
 # Образ: ghcr.io/valera7623/nail-studio
 # На этом VPS: studio-book :8088 / Redis :6379, eyelash-studio :8089 / :6380.
@@ -136,7 +136,7 @@ jobs:
               umask 077
               {
                 printf 'BOT_TOKEN=%s\n' "$BOT_TOKEN"
-                printf 'BOT_USERNAME=nailstudiobot\n'
+                printf 'BOT_USERNAME=nail_bookbot\n'
                 printf 'ADMINS=[772208133]\n'
                 printf 'SUPERADMINS=[772208133]\n'
                 printf 'HTTP_PORT=8090\n'

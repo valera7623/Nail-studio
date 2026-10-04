@@ -32,7 +32,7 @@ def _form_to_dict(data: dict) -> dict:
     return {str(k): (v[0] if isinstance(v, list) and v else v) for k, v in data.items()}
 
 
-DEFAULT_BOT_USERNAME = "nailstudiobot"
+DEFAULT_BOT_USERNAME = "nail_bookbot"
 
 
 def _landing_username(request: web.Request | None = None) -> str:

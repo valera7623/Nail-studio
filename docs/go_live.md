@@ -24,7 +24,7 @@ YOOKASSA_SECRET_KEY=...
 PAYMENT_PROVIDER=auto
 PUBLIC_BASE_URL=https://nailbook.ru
 HTTP_PORT=8090
-BOT_USERNAME=nailstudiobot
+BOT_USERNAME=nail_bookbot
 ```
 
 `auto` включает ЮKassa, если ключи заданы, иначе Prodamus.
@@ -69,15 +69,15 @@ chmod u+rw /home/valera/nail-studio/data/nail.db
 - Клиент по ссылке выбирает дату и время; студия видит запись; приходит напоминание за 24 ч или 2 ч.
 - Оплата визита — у мастера.
 
-Живой бот: **`@nailstudiobot`**. Username берётся из токена (`getMe`); в `.env` на VPS:
+Живой бот: **`@nail_bookbot`**. Username берётся из токена (`getMe`); в `.env` на VPS:
 
 ```
-BOT_TOKEN=...          # токен @nailstudiobot из BotFather
-BOT_USERNAME=nailstudiobot
+BOT_TOKEN=...          # токен @nail_bookbot из BotFather
+BOT_USERNAME=nail_bookbot
 PUBLIC_BASE_URL=https://nailbook.ru
 ```
 
-После смены токена пересоздать контейнер. В `/studio` заново открыть «Ссылка» — QR и `t.me/nailstudiobot?start=<slug>` обновятся.
+После смены токена пересоздать контейнер. В `/studio` заново открыть «Ссылка» — QR и `t.me/nail_bookbot?start=<slug>` обновятся.
 
 ## 3. Бэкап и восстановление SQLite
 
