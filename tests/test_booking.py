@@ -299,7 +299,7 @@ def test_payment_url_has_no_query_signature(monkeypatch):
     from src.services import prodamus as prodamus_mod
 
     monkeypatch.setattr(prodamus_mod.settings, "PRODAMUS_PAYFORM_URL", "https://demo.payform.ru")
-    monkeypatch.setattr(prodamus_mod.settings, "PUBLIC_BASE_URL", "https://nailbook.ru")
+    monkeypatch.setattr(prodamus_mod.settings, "PUBLIC_BASE_URL", "https://nailbook.com.ru")
     url = prodamus_mod.build_payment_url(
         order_id="slot-1-2",
         amount_rub=100,
@@ -330,7 +330,7 @@ def test_yookassa_payload_and_succeeded_event():
         order_id="slot-1-2",
         amount_rub=490,
         description="Старт",
-        return_url="https://nailbook.ru/pay/success",
+        return_url="https://nailbook.com.ru/pay/success",
         extra={"kind": "slot_prepay"},
     )
     assert payload["amount"]["value"] == "490.00"

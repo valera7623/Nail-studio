@@ -41,7 +41,7 @@ python -m src.main
 
 Тесты: `pytest`
 
-Публичный лендинг: `/` — подписка мастера, оферта, кнопка в бота. HTTP `:8090` на VPS. Домен: `https://nailbook.ru`.
+Публичный лендинг: `/` — подписка мастера, оферта, кнопка в бота. HTTP `:8090` на VPS. Домен: `https://nailbook.com.ru`.
 
 Docker: `docker compose up -d --build`. База: `data/nail.db`.
 
@@ -55,7 +55,7 @@ Docker: `docker compose up -d --build`. База: `data/nail.db`.
 
 Секреты репозитория: `VPS_HOST`, `VPS_USERNAME`, `VPS_SSH_KEY`, `BOT_TOKEN`.
 
-Первый `.env` на VPS должен содержать `PUBLIC_BASE_URL=https://nailbook.ru` (Actions дописывает, если строки нет).
+Первый `.env` на VPS должен содержать `PUBLIC_BASE_URL=https://nailbook.com.ru` (Actions дописывает, если строки нет).
 
 Локально на VPS без Actions: `./scripts/deploy-vps.sh`.
 

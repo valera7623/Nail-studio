@@ -4,17 +4,17 @@
 
 ЮKassa нужна для **подписки мастера** (тариф Старт). Клиент визит в боте не оплачивает — деньги мастеру напрямую.
 
-Предпочтительно **ЮKassa** (отдельный магазин под Nail-book / `nailbook.ru`, не shopId agentops/gameforge).
+Предпочтительно **ЮKassa** (отдельный магазин под Nail-book / `nailbook.com.ru`, не shopId agentops/gameforge).
 
-Webhook ЮKassa: `POST https://nailbook.ru/yookassa/webhook`
+Webhook ЮKassa: `POST https://nailbook.com.ru/yookassa/webhook`
 
-Webhook Prodamus (запас): `POST https://nailbook.ru/prodamus/webhook`
+Webhook Prodamus (запас): `POST https://nailbook.com.ru/prodamus/webhook`
 
 ## 0. Ключи на VPS
 
 Не копируйте `shopId` / секрет с agentops.com.ru или gameforge.website: у каждого магазина свой webhook.
 
-В кабинете ЮKassa: название текущего магазина → **Добавить магазин** → «На сайте» → `https://nailbook.ru`. Затем Интеграция → HTTP-уведомления: `https://nailbook.ru/yookassa/webhook` (событие `payment.succeeded`). Интеграция → Ключи API → секретный ключ.
+В кабинете ЮKassa: название текущего магазина → **Добавить магазин** → «На сайте» → `https://nailbook.com.ru`. Затем Интеграция → HTTP-уведомления: `https://nailbook.com.ru/yookassa/webhook` (событие `payment.succeeded`). Интеграция → Ключи API → секретный ключ.
 
 В `/home/valera/nail-studio/.env`:
 
@@ -22,7 +22,7 @@ Webhook Prodamus (запас): `POST https://nailbook.ru/prodamus/webhook`
 YOOKASSA_SHOP_ID=...
 YOOKASSA_SECRET_KEY=...
 PAYMENT_PROVIDER=auto
-PUBLIC_BASE_URL=https://nailbook.ru
+PUBLIC_BASE_URL=https://nailbook.com.ru
 HTTP_PORT=8090
 BOT_USERNAME=nail_bookbot
 ```
@@ -74,7 +74,7 @@ chmod u+rw /home/valera/nail-studio/data/nail.db
 ```
 BOT_TOKEN=...          # токен @nail_bookbot из BotFather
 BOT_USERNAME=nail_bookbot
-PUBLIC_BASE_URL=https://nailbook.ru
+PUBLIC_BASE_URL=https://nailbook.com.ru
 ```
 
 После смены токена пересоздать контейнер. В `/studio` заново открыть «Ссылка» — QR и `t.me/nail_bookbot?start=<slug>` обновятся.
@@ -135,7 +135,7 @@ sudo mkdir -p /home/valera/traefik/dynamic
 sudo cp /home/valera/nail-studio/deploy/traefik.yml /home/valera/traefik/dynamic/nail.yml
 ```
 
-Проверка: `https://nailbook.ru/` отдаёт лендинг Nail-book.
+Проверка: `https://nailbook.com.ru/` отдаёт лендинг Nail-book.
 
 ## 6. Дальше не код
 

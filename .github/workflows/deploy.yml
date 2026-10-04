@@ -143,12 +143,15 @@ jobs:
                 printf 'USE_REDIS=true\n'
                 printf 'REDIS_URL=redis://127.0.0.1:6381/0\n'
                 printf 'SQLITE_PATH=/app/data/nail.db\n'
-                printf 'PUBLIC_BASE_URL=https://nailbook.ru\n'
+                printf 'PUBLIC_BASE_URL=https://nailbook.com.ru\n'
               } > .env
               chmod 600 .env
             fi
             if ! grep -q '^PUBLIC_BASE_URL=' .env; then
-              printf '\nPUBLIC_BASE_URL=https://nailbook.ru\n' >> .env
+              printf '\nPUBLIC_BASE_URL=https://nailbook.com.ru\n' >> .env
+            fi
+            if grep -q '^PUBLIC_BASE_URL=https://nailbook.ru$' .env; then
+              sed -i 's|^PUBLIC_BASE_URL=https://nailbook.ru$|PUBLIC_BASE_URL=https://nailbook.com.ru|' .env
             fi
             mkdir -p "$DEPLOY_DIR/data/backups"
             chmod u+rwX "$DEPLOY_DIR/data" 2>/dev/null || true

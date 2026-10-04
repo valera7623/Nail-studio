@@ -54,7 +54,7 @@ class Settings(BaseSettings):
     PRODAMUS_SHOP_ID: str = ""
     PRODAMUS_PAYFORM_URL: str = ""
 
-    # ЮKassa: отдельный магазин под nailbook.ru, не shopId agentops/gameforge.
+    # ЮKassa: отдельный магазин под nailbook.com.ru, не shopId agentops/gameforge.
     YOOKASSA_SHOP_ID: str = ""
     YOOKASSA_SECRET_KEY: str = ""
     # auto = ЮKassa если ключи есть, иначе Prodamus

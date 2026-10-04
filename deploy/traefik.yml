@@ -6,7 +6,7 @@
 http:
   routers:
     nail:
-      rule: "Host(`nailbook.ru`)"
+      rule: "Host(`nailbook.com.ru`)"
       priority: 1
       entryPoints:
         - websecure
@@ -15,7 +15,7 @@ http:
         certResolver: letsencrypt
 
     nail-www:
-      rule: "Host(`www.nailbook.ru`)"
+      rule: "Host(`www.nailbook.com.ru`)"
       priority: 1
       entryPoints:
         - websecure
@@ -26,7 +26,7 @@ http:
         - nail-redirect-apex
 
     nail-http:
-      rule: "Host(`nailbook.ru`) || Host(`www.nailbook.ru`)"
+      rule: "Host(`nailbook.com.ru`) || Host(`www.nailbook.com.ru`)"
       entryPoints:
         - web
       service: nail
@@ -48,6 +48,6 @@ http:
 
     nail-redirect-apex:
       redirectRegex:
-        regex: "^https://www\\.nailbook\\.ru/(.*)"
-        replacement: "https://nailbook.ru/${1}"
+        regex: "^https://www\\.nailbook\\.com\\.ru/(.*)"
+        replacement: "https://nailbook.com.ru/${1}"
         permanent: true

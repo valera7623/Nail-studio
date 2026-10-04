@@ -211,15 +211,15 @@ def test_go_live_runbook_has_webhook():
 
     root = Path(__file__).resolve().parents[1]
     go_live = (root / "docs" / "go_live.md").read_text(encoding="utf-8")
-    assert "https://nailbook.ru/prodamus/webhook" in go_live
-    assert "https://nailbook.ru/yookassa/webhook" in go_live
+    assert "https://nailbook.com.ru/prodamus/webhook" in go_live
+    assert "https://nailbook.com.ru/yookassa/webhook" in go_live
     assert "data/backups/" in go_live
     assert "nail.before-restore.db" in go_live
     owner = (root / "src" / "handlers" / "owner.py").read_text(encoding="utf-8")
     assert "ow:guide" in owner
     assert "ow:win" in owner
     yoo = (root / "src" / "services" / "yookassa.py").read_text(encoding="utf-8")
-    assert "https://nailbook.ru/pay/success" in yoo
+    assert "https://nailbook.com.ru/pay/success" in yoo
     cfg = (root / "src" / "config.py").read_text(encoding="utf-8")
     assert "HTTP_PORT: int = 8090" in cfg
 
